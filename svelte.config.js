@@ -1,12 +1,12 @@
-import adapter from '@sveltejs/adapter-node';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+// svelte.config.js
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import adapter from '@sveltejs/adapter-auto';
 
-export default {
+const config = {
   preprocess: vitePreprocess(),
   kit: {
-    adapter: adapter({
-      precompress: true      // gzip/brotli static assets
-      // out: 'build'        // default is 'build'
-    })
+    adapter: adapter(), // <-- must call it
   }
 };
+
+export default config;

@@ -1,37 +1,25 @@
+// vite.config.js
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-import { SvelteKitPWA } from '@vite-pwa/sveltekit';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   plugins: [
     sveltekit(),
-    SvelteKitPWA({
+    VitePWA({
       registerType: 'autoUpdate',
-	  devOptions: { enabled: true },
-      // Turn this on to test install in `npm run dev`
-      devOptions: {
-        enabled: true
-      },
       manifest: {
-        name: 'Hiragana & Katakana Trainer',
-        short_name: 'Kana Trainer',
-        description: 'Spaced-repetition flashcards for Hiragana & Katakana.',
-        theme_color: '#10b981',     // matches your green buttons
-        background_color: '#ffffff',
-        display: 'standalone',
+        name: 'Hiragana Cards',
+        short_name: 'Hiragana',
         start_url: '/',
-        scope: '/',
+        display: 'standalone',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
         icons: [
-          // Provide these files in /static/icons (see step 3)
-          { src: '/icons/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
-          { src: '/icons/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
-          { src: '/icons/maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+          // drop some icons in static/ with these names/sizes or adjust as you like
+          { src: '/pwa-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: '/pwa-512x512.png', sizes: '512x512', type: 'image/png' }
         ]
-      },
-      workbox: {
-        // Cache built assets and routes for offline use
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        navigateFallback: '/index.html'
       }
     })
   ]
