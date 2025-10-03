@@ -6,15 +6,11 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "svelte-kit build",
-		"preview": "vite preview",
 		"start": "node build",
-		"heroku-postbuild": "npm run build",
-		"prepare": "svelte-kit sync || echo ''",
-		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"postinstall": "svelte-kit sync"
 	},
 	"engines": {
-		"node": ">=18 <23"
+		"node": "20.x"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
